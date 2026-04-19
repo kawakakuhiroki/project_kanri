@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="context-path" content="" />
+  <title>プロジェクト一覧 | プロジェクト管理システム</title>
+  <link rel="stylesheet" href="../static/app.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="nav">
+    <div>
+      <div class="nav-title">プロジェクト管理システム</div>
+      <div class="small user-badge">ログインID：admin　氏名：管理 太郎</div>
+    </div>
+    <div class="tabs">
+      <a class="tab active" href="#">プロジェクト一覧</a> <a class="tab" href="#">かんばん</a> <a class="tab" href="#">カレンダー</a> <a class="tab" href="#">レポート</a> <a class="tab" href="#">予実管理</a> <a class="tab" href="#">フォーラム</a> <a class="tab" href="#">ドキュメント</a> <a class="tab" href="#">不具合</a> <a class="tab" href="#">承認</a> <a class="tab" href="#">Wiki</a> <a class="tab" href="#">管理</a> <a class="tab" href="#">ログアウト</a>
+    </div>
+  </div>
+
+
+<div class="card">
+  <div class="row" style="justify-content: space-between; align-items: center;">
+    <div>
+      <div class="h1">プロジェクト一覧</div>
+      <div class="muted">ガントチャート/工数計画を管理します。</div>
+    </div>
+    <button id="newProjectBtn">新規プロジェクト</button>
+  </div>
+
+  <div id="projectForm" class="project-form">
+    <div class="row">
+      <div class="field">
+        <label>プロジェクト名</label>
+        <input type="text" id="projectName" value="新商品開発" />
+      </div>
+      <div class="field">
+        <label>コード</label>
+        <input type="text" id="projectCode" value="PJ-001" />
+      </div>
+      <div class="field">
+        <label>開始日</label>
+        <input type="date" id="projectStart" value="2026-01-10" />
+      </div>
+      <div class="field">
+        <label>終了日</label>
+        <input type="date" id="projectEnd" value="2026-03-31" />
+      </div>
+      <div class="field" style="min-width: 280px;">
+        <label>概要</label>
+        <input type="text" id="projectDesc" value="新商品の企画からリリースまで" />
+      </div>
+    </div>
+    <div class="row" style="margin-top: 12px;">
+      <button id="createProjectBtn">作成</button>
+      <button class="secondary" id="cancelProjectBtn">キャンセル</button>
+      <div id="projectError" class="inline-error"></div>
+    </div>
+  </div>
+
+  <div class="table-scroll" style="margin-top: 18px;">
+    <table class="projects-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>コード</th>
+        <th>プロジェクト名</th>
+        <th>開始</th>
+        <th>終了</th>
+        <th>ステータス</th>
+        <th>進捗</th>
+        <th>タスク数</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody id="projectsBody"></tbody>
+    </table>
+  </div>
+</div>
+
+  </div>
+
+<script src="../fixtures.js"></script>
+<script>setupMockFetch();</script>
+<script src="../static/projects.js"></script>
+
+</body>
+</html>

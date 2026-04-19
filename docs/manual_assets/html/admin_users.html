@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="context-path" content="" />
+  <title>ユーザー管理 | プロジェクト管理システム</title>
+  <link rel="stylesheet" href="../static/app.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="nav">
+    <div>
+      <div class="nav-title">プロジェクト管理システム</div>
+      <div class="small user-badge">ログインID：admin　氏名：管理 太郎</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="#">プロジェクト一覧</a> <a class="tab" href="#">かんばん</a> <a class="tab" href="#">カレンダー</a> <a class="tab" href="#">レポート</a> <a class="tab" href="#">予実管理</a> <a class="tab" href="#">フォーラム</a> <a class="tab" href="#">ドキュメント</a> <a class="tab" href="#">不具合</a> <a class="tab" href="#">承認</a> <a class="tab" href="#">Wiki</a> <a class="tab active" href="#">管理</a> <a class="tab" href="#">ログアウト</a>
+    </div>
+  </div>
+
+
+<div class="card">
+  <div class="h1">ユーザー管理</div>
+  <div class="muted">システム利用者・権限・有効状態を管理します。</div>
+
+  <div id="adminUsersError" class="inline-error"></div>
+
+  <div class="admin-user-form">
+    <div class="field">
+      <label>ログインID</label>
+      <input type="text" id="newUserLoginId" value="newuser" />
+    </div>
+    <div class="field">
+      <label>氏名</label>
+      <input type="text" id="newUserName" value="新人 太郎" />
+    </div>
+    <div class="field">
+      <label>メール</label>
+      <input type="email" id="newUserEmail" value="newuser@example.com" />
+    </div>
+    <div class="field">
+      <label>権限</label>
+      <select id="newUserRole">
+        <option value="ADMIN">ADMIN</option>
+        <option value="MANAGER">MANAGER</option>
+        <option value="MEMBER" selected>MEMBER</option>
+        <option value="VIEWER">VIEWER</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>初期パスワード</label>
+      <input type="password" id="newUserPassword" value="Passw0rd" />
+    </div>
+    <div class="field">
+      <label>有効</label>
+      <select id="newUserActive">
+        <option value="true" selected>有効</option>
+        <option value="false">無効</option>
+      </select>
+    </div>
+    <div class="row" style="align-items: flex-end;">
+      <button id="createUserBtn">追加</button>
+    </div>
+  </div>
+
+  <div class="table-scroll" style="margin-top: 12px;">
+    <table class="admin-users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ログインID</th>
+          <th>氏名</th>
+          <th>メール</th>
+          <th>権限</th>
+          <th>有効</th>
+          <th>パスワード更新</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="adminUsersBody"></tbody>
+    </table>
+  </div>
+</div>
+
+  </div>
+
+<script src="../fixtures.js"></script>
+<script>setupMockFetch();</script>
+<script src="../static/admin_users.js"></script>
+
+</body>
+</html>

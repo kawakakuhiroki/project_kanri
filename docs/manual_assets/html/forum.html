@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="context-path" content="" />
+  <title>フォーラム | プロジェクト管理システム</title>
+  <link rel="stylesheet" href="../static/app.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="nav">
+    <div>
+      <div class="nav-title">プロジェクト管理システム</div>
+      <div class="small user-badge">ログインID：admin　氏名：管理 太郎</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="#">プロジェクト一覧</a> <a class="tab" href="#">かんばん</a> <a class="tab" href="#">カレンダー</a> <a class="tab" href="#">レポート</a> <a class="tab" href="#">予実管理</a> <a class="tab active" href="#">フォーラム</a> <a class="tab" href="#">ドキュメント</a> <a class="tab" href="#">不具合</a> <a class="tab" href="#">承認</a> <a class="tab" href="#">Wiki</a> <a class="tab" href="#">管理</a> <a class="tab" href="#">ログアウト</a>
+    </div>
+  </div>
+
+
+<div class="card">
+  <div class="h1">フォーラム / チャット</div>
+  <div class="muted">プロジェクト内で議論や相談を行います。</div>
+
+  <div id="forumError" class="inline-error"></div>
+
+  <div class="forum-layout">
+    <div class="forum-threads">
+      <div class="row" style="justify-content: space-between; align-items: center;">
+        <div class="h2">スレッド</div>
+        <button class="secondary" id="newThreadBtn">新規スレッド</button>
+      </div>
+      <div id="threadForm" style="margin-top: 8px;">
+        <input type="text" id="threadTitle" value="週次の課題共有" />
+        <button id="createThreadBtn">作成</button>
+      </div>
+      <div id="threadList" class="thread-list"></div>
+    </div>
+    <div class="forum-posts">
+      <div class="h2" id="threadTitleLabel">投稿</div>
+      <div id="postList" class="post-list"></div>
+      <div class="row" style="margin-top: 8px;">
+        <input type="text" id="postBody" placeholder="投稿内容" style="flex: 1;" />
+        <button id="postBtn">投稿</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="h2">チャット</div>
+    <div id="chatList" class="chat-list"></div>
+    <div class="row" style="margin-top: 8px;">
+      <input type="text" id="chatInput" placeholder="メッセージ" style="flex: 1;" />
+      <button id="chatSendBtn">送信</button>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+<script src="../fixtures.js"></script>
+<script>setupMockFetch(); window.PROJECT_ID = "1";</script>
+<script src="../static/forum.js"></script>
+
+</body>
+</html>

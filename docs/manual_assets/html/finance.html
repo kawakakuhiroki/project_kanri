@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="context-path" content="" />
+  <title>予実管理 | プロジェクト管理システム</title>
+  <link rel="stylesheet" href="../static/app.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="nav">
+    <div>
+      <div class="nav-title">プロジェクト管理システム</div>
+      <div class="small user-badge">ログインID：admin　氏名：管理 太郎</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="#">プロジェクト一覧</a> <a class="tab" href="#">かんばん</a> <a class="tab" href="#">カレンダー</a> <a class="tab" href="#">レポート</a> <a class="tab active" href="#">予実管理</a> <a class="tab" href="#">フォーラム</a> <a class="tab" href="#">ドキュメント</a> <a class="tab" href="#">不具合</a> <a class="tab" href="#">承認</a> <a class="tab" href="#">Wiki</a> <a class="tab" href="#">管理</a> <a class="tab" href="#">ログアウト</a>
+    </div>
+  </div>
+
+
+<div class="card">
+  <div class="h1">予実管理</div>
+  <div class="muted">売上/原価/工数の予実を管理します。</div>
+
+  <div id="financeError" class="inline-error"></div>
+
+  <div class="finance-grid">
+    <div class="field">
+      <label>売上予算</label>
+      <input type="number" id="budgetRevenue" min="0" step="1" />
+    </div>
+    <div class="field">
+      <label>原価予算</label>
+      <input type="number" id="budgetCost" min="0" step="1" />
+    </div>
+    <div class="field">
+      <label>売上実績</label>
+      <input type="number" id="revenueActual" min="0" step="1" />
+    </div>
+    <div class="field">
+      <label>原価実績</label>
+      <input type="number" id="costActual" min="0" step="1" />
+    </div>
+    <div class="field">
+      <label>工数原価実績</label>
+      <input type="number" id="laborCostActual" min="0" step="1" />
+    </div>
+  </div>
+
+  <div class="finance-summary" id="financeSummary"></div>
+
+  <div class="row" style="margin-top: 12px;">
+    <button id="saveFinanceBtn">保存</button>
+  </div>
+</div>
+
+  </div>
+
+<script src="../fixtures.js"></script>
+<script>setupMockFetch(); window.PROJECT_ID = "1";</script>
+<script src="../static/finance.js"></script>
+
+</body>
+</html>

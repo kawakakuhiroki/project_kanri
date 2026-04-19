@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="context-path" content="" />
+  <title>Wiki | プロジェクト管理システム</title>
+  <link rel="stylesheet" href="../static/app.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="nav">
+    <div>
+      <div class="nav-title">プロジェクト管理システム</div>
+      <div class="small user-badge">ログインID：admin　氏名：管理 太郎</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="#">プロジェクト一覧</a> <a class="tab" href="#">かんばん</a> <a class="tab" href="#">カレンダー</a> <a class="tab" href="#">レポート</a> <a class="tab" href="#">予実管理</a> <a class="tab" href="#">フォーラム</a> <a class="tab" href="#">ドキュメント</a> <a class="tab" href="#">不具合</a> <a class="tab" href="#">承認</a> <a class="tab active" href="#">Wiki</a> <a class="tab" href="#">管理</a> <a class="tab" href="#">ログアウト</a>
+    </div>
+  </div>
+
+
+<div class="card">
+  <div class="h1">Wiki</div>
+  <div class="muted">プロジェクトのナレッジや資料をまとめます。</div>
+
+  <div id="wikiError" class="inline-error"></div>
+
+  <div class="wiki-layout">
+    <div class="wiki-list">
+      <div class="row" style="justify-content: space-between; align-items: center;">
+        <div class="h2">ページ一覧</div>
+        <button class="secondary" id="newWikiBtn">新規ページ</button>
+      </div>
+      <div id="wikiList" class="wiki-items"></div>
+    </div>
+    <div class="wiki-editor">
+      <div class="field">
+        <label>タイトル</label>
+        <input type="text" id="wikiTitle" />
+      </div>
+      <div class="field">
+        <label>本文</label>
+        <textarea id="wikiContent" rows="12"></textarea>
+      </div>
+      <div class="row" style="justify-content: space-between; align-items: center;">
+        <div id="wikiMeta" class="muted small"></div>
+        <button id="saveWikiBtn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+<script src="../fixtures.js"></script>
+<script>setupMockFetch(); window.PROJECT_ID = "1";</script>
+<script src="../static/wiki.js"></script>
+
+</body>
+</html>
