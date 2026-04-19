@@ -10,6 +10,7 @@
 
 <div class="card" style="max-width: 520px; margin: 40px auto;">
   <div class="h1">ログイン</div>
+  <div class="muted" style="margin-bottom: 12px;">利用を開始するには、配布されたアカウント情報でログインしてください。</div>
   <form method="post" action="${pageContext.request.contextPath}/login">
     <div class="field">
       <label>ログインID</label>

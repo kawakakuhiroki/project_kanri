@@ -28,24 +28,7 @@ nextMonthBtn.addEventListener('click', () => {
 });
 
 async function ensureProject() {
-  if (projectId) {
-    return true;
-  }
-  try {
-    const res = await fetch(`${ctx}/api/projects`);
-    if (!res.ok) {
-      throw new Error('プロジェクト一覧の取得に失敗しました。');
-    }
-    const projects = await res.json();
-    if (projects.length) {
-      window.location.href = `${ctx}/calendar?projectId=${projects[0].id}`;
-      return false;
-    }
-    calendarError.textContent = 'プロジェクトがありません。先に作成してください。';
-  } catch (e) {
-    calendarError.textContent = e.message;
-  }
-  return false;
+  return window.ProjectContext.ensure(projectId, calendarError, 'カレンダー');
 }
 
 async function loadTasks() {

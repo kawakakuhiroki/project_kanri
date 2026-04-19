@@ -169,5 +169,6 @@
 <script>
   window.PROJECT_ID = "<%= projectId %>";
 </script>
+<script src="${pageContext.request.contextPath}/static/project_context.js"></script>
 <script src="${pageContext.request.contextPath}/static/project.js"></script>
 <jsp:include page="_bottom.jsp" />

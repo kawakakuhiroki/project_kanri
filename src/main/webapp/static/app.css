@@ -70,6 +70,18 @@ a {
   background: var(--accent-soft);
   box-shadow: 0 0 0 2px rgba(18, 58, 143, 0.08) inset;
 }
+.tab-disabled {
+  opacity: 0.7;
+}
+.auth-header {
+  display: grid;
+  gap: 6px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #ffffff 0%, #f4f7ff 100%);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
 .card {
   margin-top: 18px;
   padding: 20px;
@@ -212,10 +224,40 @@ th {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  align-items: flex-end;
 }
 .action-row button {
   padding: 6px 8px;
   font-size: 12px;
+}
+.project-primary-actions,
+.project-secondary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.project-secondary-actions select {
+  min-width: 180px;
+}
+.project-context-notice {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #c9d6f2;
+  background: #f6f9ff;
+  color: var(--text);
+}
+.project-context-title {
+  font-weight: 700;
+}
+.project-context-body {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.project-context-actions {
+  margin-top: 10px;
 }
 
 /* Plan */

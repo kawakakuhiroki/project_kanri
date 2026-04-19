@@ -27,24 +27,7 @@ function setError(message) {
 }
 
 async function ensureProject() {
-  if (projectId) {
-    return true;
-  }
-  try {
-    const res = await fetch(`${ctx}/api/projects`);
-    if (!res.ok) {
-      throw new Error('プロジェクト一覧の取得に失敗しました。');
-    }
-    const projects = await res.json();
-    if (projects.length) {
-      window.location.href = `${ctx}/workflow?projectId=${projects[0].id}`;
-      return false;
-    }
-    setError('プロジェクトがありません。先に作成してください。');
-  } catch (e) {
-    setError(e.message);
-  }
-  return false;
+  return window.ProjectContext.ensure(projectId, workflowError, '承認ワークフロー');
 }
 
 async function loadUsers() {

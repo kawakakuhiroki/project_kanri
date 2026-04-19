@@ -6,10 +6,14 @@
 --%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%
+  String ctx = request.getContextPath();
   String pid = request.getParameter("projectId");
   String pidParam = "";
+  String projectScopedFallback = ctx + "/projects";
+  boolean hasProjectContext = false;
   if (pid != null && !pid.isBlank()) {
     pidParam = "?projectId=" + pid;
+    hasProjectContext = true;
   }
 %>
 <div class="nav">
@@ -30,15 +34,15 @@
   </div>
   <div class="tabs">
     <a class="tab ${activeTab=='projects'?'active':''}" href="${pageContext.request.contextPath}/projects">プロジェクト一覧</a>
-    <a class="tab ${activeTab=='kanban'?'active':''}" href="${pageContext.request.contextPath}/kanban<%= pidParam %>">かんばん</a>
-    <a class="tab ${activeTab=='calendar'?'active':''}" href="${pageContext.request.contextPath}/calendar<%= pidParam %>">カレンダー</a>
-    <a class="tab ${activeTab=='reports'?'active':''}" href="${pageContext.request.contextPath}/reports<%= pidParam %>">レポート</a>
-    <a class="tab ${activeTab=='finance'?'active':''}" href="${pageContext.request.contextPath}/finance<%= pidParam %>">予実管理</a>
-    <a class="tab ${activeTab=='forum'?'active':''}" href="${pageContext.request.contextPath}/forum<%= pidParam %>">フォーラム</a>
-    <a class="tab ${activeTab=='docs'?'active':''}" href="${pageContext.request.contextPath}/docs<%= pidParam %>">ドキュメント</a>
-    <a class="tab ${activeTab=='issues'?'active':''}" href="${pageContext.request.contextPath}/issues<%= pidParam %>">不具合</a>
-    <a class="tab ${activeTab=='workflow'?'active':''}" href="${pageContext.request.contextPath}/workflow<%= pidParam %>">承認</a>
-    <a class="tab ${activeTab=='wiki'?'active':''}" href="${pageContext.request.contextPath}/wiki<%= pidParam %>">Wiki</a>
+    <a class="tab ${activeTab=='kanban'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/kanban" + pidParam : projectScopedFallback %>">かんばん</a>
+    <a class="tab ${activeTab=='calendar'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/calendar" + pidParam : projectScopedFallback %>">カレンダー</a>
+    <a class="tab ${activeTab=='reports'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/reports" + pidParam : projectScopedFallback %>">レポート</a>
+    <a class="tab ${activeTab=='finance'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/finance" + pidParam : projectScopedFallback %>">予実管理</a>
+    <a class="tab ${activeTab=='forum'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/forum" + pidParam : projectScopedFallback %>">フォーラム</a>
+    <a class="tab ${activeTab=='docs'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/docs" + pidParam : projectScopedFallback %>">ドキュメント</a>
+    <a class="tab ${activeTab=='issues'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/issues" + pidParam : projectScopedFallback %>">不具合</a>
+    <a class="tab ${activeTab=='workflow'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/workflow" + pidParam : projectScopedFallback %>">承認</a>
+    <a class="tab ${activeTab=='wiki'?'active':''} <%= hasProjectContext ? "" : "tab-disabled" %>" href="<%= hasProjectContext ? ctx + "/wiki" + pidParam : projectScopedFallback %>">Wiki</a>
     <c:if test="${sessionScope.role == 'ADMIN'}">
       <a class="tab ${activeTab=='admin'?'active':''}" href="${pageContext.request.contextPath}/admin/users">管理</a>
     </c:if>

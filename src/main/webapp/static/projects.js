@@ -84,54 +84,47 @@ async function loadProjects() {
         <td>${p.taskCount ?? 0}</td>
         <td>
           <div class="action-row">
-            <button data-open="${p.id}">計画</button>
-            <button class="secondary" data-kanban="${p.id}">かんばん</button>
-            <button class="secondary" data-calendar="${p.id}">カレンダー</button>
-            <button class="secondary" data-reports="${p.id}">レポート</button>
-            <button class="secondary" data-finance="${p.id}">予実</button>
-            <button class="secondary" data-forum="${p.id}">フォーラム</button>
-            <button class="secondary" data-docs="${p.id}">ドキュメント</button>
-            <button class="secondary" data-issues="${p.id}">不具合</button>
-            <button class="secondary" data-workflow="${p.id}">承認</button>
-            <button class="secondary" data-wiki="${p.id}">Wiki</button>
+            <div class="project-primary-actions">
+              <button data-open="${p.id}">計画</button>
+              <button class="secondary" data-kanban="${p.id}">かんばん</button>
+            </div>
+            <div class="project-secondary-actions">
+              <select data-screen="${p.id}">
+                <option value="">その他の画面を選択</option>
+                <option value="calendar">カレンダー</option>
+                <option value="reports">レポート</option>
+                <option value="finance">予実管理</option>
+                <option value="forum">フォーラム</option>
+                <option value="docs">ドキュメント</option>
+                <option value="issues">不具合</option>
+                <option value="workflow">承認</option>
+                <option value="wiki">Wiki</option>
+              </select>
+              <button class="secondary" data-open-screen="${p.id}">開く</button>
+            </div>
           </div>
         </td>
       `;
-      tr.querySelector('button[data-open]').addEventListener('click', () => {
-        window.location.href = `${ctx}/project?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-kanban]').addEventListener('click', () => {
-        window.location.href = `${ctx}/kanban?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-calendar]').addEventListener('click', () => {
-        window.location.href = `${ctx}/calendar?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-reports]').addEventListener('click', () => {
-        window.location.href = `${ctx}/reports?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-finance]').addEventListener('click', () => {
-        window.location.href = `${ctx}/finance?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-forum]').addEventListener('click', () => {
-        window.location.href = `${ctx}/forum?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-docs]').addEventListener('click', () => {
-        window.location.href = `${ctx}/docs?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-issues]').addEventListener('click', () => {
-        window.location.href = `${ctx}/issues?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-workflow]').addEventListener('click', () => {
-        window.location.href = `${ctx}/workflow?projectId=${p.id}`;
-      });
-      tr.querySelector('button[data-wiki]').addEventListener('click', () => {
-        window.location.href = `${ctx}/wiki?projectId=${p.id}`;
+      tr.querySelector('button[data-open]').addEventListener('click', () => openProjectScreen(p.id, 'project'));
+      tr.querySelector('button[data-kanban]').addEventListener('click', () => openProjectScreen(p.id, 'kanban'));
+      const screenSelect = tr.querySelector('select[data-screen]');
+      tr.querySelector('button[data-open-screen]').addEventListener('click', () => {
+        if (!screenSelect.value) {
+          screenSelect.focus();
+          return;
+        }
+        openProjectScreen(p.id, screenSelect.value);
       });
       projectsBody.appendChild(tr);
     });
   } catch (e) {
     projectsBody.innerHTML = `<tr><td colspan="9" class="inline-error">${escapeHtml(e.message)}</td></tr>`;
   }
+}
+
+function openProjectScreen(projectId, screen) {
+  const path = screen === 'project' ? 'project' : screen;
+  window.location.href = `${ctx}/${path}?projectId=${projectId}`;
 }
 
 function escapeHtml(value) {

@@ -17,4 +17,14 @@
 </head>
 <body>
   <div class="container">
-    <jsp:include page="_header.jsp" />
+    <c:choose>
+      <c:when test="${requestScope.showGlobalHeader == false}">
+        <div class="auth-header">
+          <div class="nav-title">プロジェクト管理システム</div>
+          <div class="muted">プロジェクトの計画・進行・共有を一元管理します。</div>
+        </div>
+      </c:when>
+      <c:otherwise>
+        <jsp:include page="_header.jsp" />
+      </c:otherwise>
+    </c:choose>

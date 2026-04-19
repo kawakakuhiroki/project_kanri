@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     req.setAttribute("pageTitle", "ログイン");
+    req.setAttribute("showGlobalHeader", false);
     WebUtil.forward(req, resp, "login.jsp");
   }
 

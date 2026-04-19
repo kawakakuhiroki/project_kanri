@@ -114,8 +114,7 @@ function syncScroll(source, target) {
 }
 
 async function loadPlan() {
-  if (!projectId) {
-    planError.textContent = 'projectId が指定されていません。';
+  if (!window.ProjectContext.ensure(projectId, planError, '計画編集')) {
     return;
   }
   planError.textContent = '';
