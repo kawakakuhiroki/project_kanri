@@ -73,15 +73,6 @@ a {
 .tab-disabled {
   opacity: 0.7;
 }
-.auth-header {
-  display: grid;
-  gap: 6px;
-  padding: 22px 24px;
-  border: 1px solid var(--line);
-  background: linear-gradient(135deg, #ffffff 0%, #f4f7ff 100%);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-}
 .card {
   margin-top: 18px;
   padding: 20px;
@@ -258,6 +249,58 @@ th {
 }
 .project-context-actions {
   margin-top: 10px;
+}
+
+.login-shell {
+  margin-top: 52px;
+}
+.login-card {
+  margin-top: 0;
+  min-height: 380px;
+  padding: 40px 34px;
+  border-radius: 24px;
+}
+.login-panel {
+  max-width: 520px;
+}
+.login-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.login-form {
+  margin-top: 26px;
+}
+.login-field {
+  min-width: 0;
+  max-width: 520px;
+}
+.login-field label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #5e6f86;
+}
+.login-field input {
+  min-height: 62px;
+  padding: 14px 18px;
+  font-size: 18px;
+}
+.login-field input::placeholder {
+  color: #8a95a8;
+}
+.login-actions {
+  margin-top: 20px;
+}
+.login-actions button {
+  min-width: 140px;
+  min-height: 70px;
+  padding: 16px 24px;
+  font-size: 20px;
+  border-radius: 18px;
+}
+.login-error {
+  margin-top: 14px;
+  font-size: 14px;
 }
 
 /* Plan */
